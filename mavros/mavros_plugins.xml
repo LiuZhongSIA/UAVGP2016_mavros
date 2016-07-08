@@ -65,6 +65,9 @@
 	<class name="altitude" type="mavplugin::AltitudePlugin" base_class_type="mavplugin::MavRosPlugin">
 		<description>Publish altitude values</description>
 	</class>
+	<class name="attitude" type="mavplugin::AttitudePlugin" base_class_type="mavplugin::MavRosPlugin">
+		<description>Publish attitude values</description>
+	</class>
         <class name="hil_controls" type="mavplugin::HilControlsPlugin" base_class_type="mavplugin::MavRosPlugin">
 		<description>Publish HIL controls values</description>
 	</class>
