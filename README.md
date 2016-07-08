@@ -22,8 +22,6 @@
 
   $ wstool update -t src
 
-  $ cd ..
-
   $ catkin build [mavros]
   
 # How to connect to pixhawk
