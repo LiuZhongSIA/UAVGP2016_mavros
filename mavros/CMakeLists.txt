@@ -122,6 +122,7 @@ add_library(mavros_plugins
   src/plugins/actuator_control.cpp
   src/plugins/manual_control.cpp
   src/plugins/altitude.cpp
+  src/plugins/attitude.cpp
   src/plugins/hil_controls.cpp
 )
 add_dependencies(mavros_plugins
@@ -155,6 +156,15 @@ target_link_libraries(gcs_bridge
   ${Boost_LIBRARIES}
 )
 
+add_executable(offb_node
+  src/offb_node.cpp
+)
+target_link_libraries(offb_node
+  mavros
+  ${catkin_LIBRARIES}
+  ${Boost_LIBRARIES}
+)
+
 #############
 ## Install ##
 #############
@@ -171,7 +181,7 @@ catkin_install_python(PROGRAMS
 )
 
 ## Mark executables and/or libraries for installation
-install(TARGETS mavros mavros_plugins mavros_node gcs_bridge
+install(TARGETS mavros mavros_plugins mavros_node gcs_bridge offb_node
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
