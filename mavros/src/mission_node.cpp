@@ -172,18 +172,18 @@ void state_machine(void){
         
         case POS_A:
             local_pos_pub.publish(pose_a);      // first publish pos A 
-            if((abs(current_pos.pose.position.x - pose_a.pose.position.x) < 0.5) &&      // switch to next state
-               (abs(current_pos.pose.position.y - pose_a.pose.position.y) < 0.5) &&
-               (abs(current_pos.pose.position.z - pose_a.pose.position.z) < 0.5))
+            if((abs(current_pos.pose.position.x - pose_a.pose.position.x) < 0.2) &&      // switch to next state
+               (abs(current_pos.pose.position.y - pose_a.pose.position.y) < 0.2) &&
+               (abs(current_pos.pose.position.z - pose_a.pose.position.z) < 0.2))
                {
                     current_pos_state = POS_B; // current_pos_state++;
                }
             break;
         case POS_B:
             local_pos_pub.publish(pose_b);      // first publish pos B 
-            if((abs(current_pos.pose.position.x - pose_b.pose.position.x) < 0.5) &&      // switch to next state
-               (abs(current_pos.pose.position.y - pose_b.pose.position.y) < 0.5) &&
-               (abs(current_pos.pose.position.z - pose_b.pose.position.z) < 0.5))
+            if((abs(current_pos.pose.position.x - pose_b.pose.position.x) < 0.2) &&      // switch to next state
+               (abs(current_pos.pose.position.y - pose_b.pose.position.y) < 0.2) &&
+               (abs(current_pos.pose.position.z - pose_b.pose.position.z) < 0.2))
                {
                     current_pos_state = LAND; // current_pos_state++;
                }
