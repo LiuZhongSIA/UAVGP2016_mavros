@@ -1,5 +1,5 @@
 # How to use
-  1. Read master branch's [README.md](https://github.com/huanglilong/mavros/blob/master/README.md)
+  1. Read master branch's [README.md](https://github.com/mavlink/mavros/blob/master/mavros/README.md#installation)
 
 # How to build
   $ mkdir mavros_ws/src
