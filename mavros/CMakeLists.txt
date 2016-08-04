@@ -165,6 +165,15 @@ target_link_libraries(offb_node
   ${Boost_LIBRARIES}
 )
 
+add_executable(mission_node
+  src/mission_node.cpp
+)
+target_link_libraries(mission_node
+  mavros
+  ${catkin_LIBRARIES}
+  ${Boost_LIBRARIES}
+)
+
 #############
 ## Install ##
 #############
@@ -181,7 +190,7 @@ catkin_install_python(PROGRAMS
 )
 
 ## Mark executables and/or libraries for installation
-install(TARGETS mavros mavros_plugins mavros_node gcs_bridge offb_node
+install(TARGETS mavros mavros_plugins mavros_node gcs_bridge offb_node mission_node
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
