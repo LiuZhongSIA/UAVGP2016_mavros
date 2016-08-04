@@ -22,7 +22,7 @@ void state_cb(const mavros_msgs::State::ConstPtr& msg){
 mavros_msgs::Attitude att;
 void att_cb(const mavros_msgs::Attitude::ConstPtr& msg){
     att = *msg;
-    ROS_INFO("Attitude roll: %f", att.roll);
+    //ROS_INFO("Attitude roll: %f", att.roll);
 }
 
 int main(int argc, char **argv)
@@ -68,6 +68,30 @@ int main(int argc, char **argv)
     ros::Time last_request = ros::Time::now();
 
     while(ros::ok()){
+
+        // this part for simulation
+        if(current_state.mode != "OFFBOARD" &&
+          (ros::Time::now() - last_request > ros::Duration(5.0)))
+        {
+            if(set_mode_client.call(offb_set_mode) &&
+               offb_set_mode.response.success)
+            {
+                ROS_INFO("Offboard enabled");
+            }
+            last_request = ros::Time::now();
+        } else 
+        {
+            if(!current_state.armed &&      // if not armed
+              (ros::Time::now() - last_request > ros::Duration(5.0)))
+              {
+                if(arming_client.call(arm_cmd) &&
+                   arm_cmd.response.success)
+                {
+                    ROS_INFO("Vehicle armed");
+                }
+                last_request = ros::Time::now();
+            }
+        }
 
         local_pos_pub.publish(pose);
 
