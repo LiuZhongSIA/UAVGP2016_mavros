@@ -1,5 +1,6 @@
 # How to use
-  1. Read master branch's [README.md](https://github.com/mavlink/mavros/blob/master/mavros/README.md#installation)
+  1. Read master branch's [README.md](https://github.com/mavlink/mavros/blob/master/mavros/README.md#installation)(options)
+  2. sudo apt-get install python-catkin-tools python-rosinstall-generator -y
 
 # How to build
   $ mkdir mavros_ws/src
@@ -31,7 +32,7 @@
   
   Press safety switch here!
   
-  $ rosrun mavros mavsaftey arm
+  $ rosrun mavros mavsafety arm
   
   $ rosrun mavros offb_node
   
