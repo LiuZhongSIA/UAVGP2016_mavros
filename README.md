@@ -35,6 +35,11 @@
   $ rosrun mavros mavsafety arm
   
   $ rosrun mavros offb_node
+
+# Simulating with gazebo
+  $ make posix_sitl_default gazebo
+
+  $ roslaunch mavros px4.launch fcu_url:="udp://:14540@127.0.0.1:14557"
   
 # Get the topic's messages
   $ rqt_graph
