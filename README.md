@@ -13,15 +13,7 @@
   
   $ git clone https://github.com/huanglilong/mavros
   
-  $ cd ..
-  
-  $ wstool init src
-
-  $ rosinstall_generator mavlink | tee /tmp/mavlink.rosinstall
-
-  $ wstool merge -t src /tmp/mavlink.rosinstall
-
-  $ wstool update -t src
+  $ git clone https://github.com/huanglilong/mavlink-kinetic mavlink
 
   $ catkin build [mavros]
   
