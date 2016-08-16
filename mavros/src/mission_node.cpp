@@ -90,11 +90,16 @@ int main(int argc, char **argv)
     pose_b.pose.position.z = 5;
 
 	auto quat_yaw = mavros::ftf::quaternion_from_rpy(0.0, 0.0, 0.0);
-	pose.pose.orientation.x = quat_yaw.x();
-	pose.pose.orientation.y = quat_yaw.y();
-	pose.pose.orientation.z = quat_yaw.z();
-	pose.pose.orientation.w = quat_yaw.w();
+	pose_a.pose.orientation.x = quat_yaw.x();
+	pose_a.pose.orientation.y = quat_yaw.y();
+	pose_a.pose.orientation.z = quat_yaw.z();
+	pose_a.pose.orientation.w = quat_yaw.w();
 	
+	pose_b.pose.orientation.x = quat_yaw.x();
+	pose_b.pose.orientation.y = quat_yaw.y();
+	pose_b.pose.orientation.z = quat_yaw.z();
+	pose_b.pose.orientation.w = quat_yaw.w();
+
     //send a few setpoints before starting  --> for safety
     for(int i = 100; ros::ok() && i > 0; --i){
         local_pos_pub.publish(pose_a);
