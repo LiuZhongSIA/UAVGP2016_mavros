@@ -2,7 +2,7 @@
 * @file offb_node.cpp
 * @brief offboard example node, written with mavros version 0.14.2,
 *  px4 flight stack and tested in Gazebo SITL
-* @author huang lil long <huanglilongwk@outlook.com>
+* @author huang li long <huanglilongwk@outlook.com>
 * @time 2016/07/05
 */
 
@@ -13,6 +13,7 @@
 #include <mavros_msgs/State.h>
 #include <mavros_msgs/Attitude.h>
 
+#include <mavros/frame_tf.h>
 
 mavros_msgs::State current_state;
 void state_cb(const mavros_msgs::State::ConstPtr& msg){
@@ -52,6 +53,12 @@ int main(int argc, char **argv)
     pose.pose.position.y = 0;
     pose.pose.position.z = 2;
 
+	auto quat_yaw = mavros::ftf::quaternion_from_rpy(0.0, 0.0, 3.14);
+	pose.pose.orientation.x = quat_yaw.x();
+	pose.pose.orientation.y = quat_yaw.y();
+	pose.pose.orientation.z = quat_yaw.z();
+	pose.pose.orientation.w = quat_yaw.w();
+
     //send a few setpoints before starting
     for(int i = 100; ros::ok() && i > 0; --i){
         local_pos_pub.publish(pose);
@@ -70,28 +77,28 @@ int main(int argc, char **argv)
     while(ros::ok()){
 
         // this part for simulation
-        // if(current_state.mode != "OFFBOARD" &&
-        //   (ros::Time::now() - last_request > ros::Duration(5.0)))
-        // {
-        //     if(set_mode_client.call(offb_set_mode) &&
-        //        offb_set_mode.response.success)
-        //     {
-        //         ROS_INFO("Offboard enabled");
-        //     }
-        //     last_request = ros::Time::now();
-        // } else 
-        // {
-        //     if(!current_state.armed &&      // if not armed
-        //       (ros::Time::now() - last_request > ros::Duration(5.0)))
-        //       {
-        //         if(arming_client.call(arm_cmd) &&
-        //            arm_cmd.response.success)
-        //         {
-        //             ROS_INFO("Vehicle armed");
-        //         }
-        //         last_request = ros::Time::now();
-        //     }
-        // }
+        if(current_state.mode != "OFFBOARD" &&
+          (ros::Time::now() - last_request > ros::Duration(5.0)))
+        {
+            if(set_mode_client.call(offb_set_mode) &&
+               offb_set_mode.response.success)
+            {
+                ROS_INFO("Offboard enabled");
+            }
+            last_request = ros::Time::now();
+        } else 
+        {
+            if(!current_state.armed &&      // if not armed
+              (ros::Time::now() - last_request > ros::Duration(5.0)))
+              {
+                if(arming_client.call(arm_cmd) &&
+                   arm_cmd.response.success)
+                {
+                    ROS_INFO("Vehicle armed");
+                }
+                last_request = ros::Time::now();
+            }
+        }
 
         local_pos_pub.publish(pose);
 
