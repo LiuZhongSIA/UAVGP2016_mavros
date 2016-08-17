@@ -12,12 +12,19 @@
 #include <mavros_msgs/SetMode.h>
 #include <mavros_msgs/State.h>
 #include <mavros_msgs/Attitude.h>
+#include <mavros_msgs/Mavros_msg.h>
 
 #include <mavros/frame_tf.h>
 
 mavros_msgs::State current_state;
 void state_cb(const mavros_msgs::State::ConstPtr& msg){
     current_state = *msg;
+}
+
+mavros_msgs::Mavros_msg msg_test;
+void mavros_msg_cb(const mavros_msgs::Mavros_msg::ConstPtr& msg){
+    msg_test = *msg;
+    ROS_INFO("mavros_msg test: %f", msg_test.test);
 }
 
 mavros_msgs::Attitude att;
@@ -32,6 +39,8 @@ int main(int argc, char **argv)
     ros::NodeHandle nh;
 
     ros::Subscriber state_sub = nh.subscribe<mavros_msgs::State>("mavros/state", 10, state_cb);
+
+	ros::Subscriber test_msg_sub = nh.subscribe<mavros_msgs::Mavros_msg>("mavros/mavros_msg", 10, mavros_msg_cb);
 
     ros::Subscriber att_sub = nh.subscribe<mavros_msgs::Attitude>("mavros/attitude", 10, att_cb);
 
