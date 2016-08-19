@@ -1,9 +1,8 @@
 /**
-* @file offb_node.cpp
+* @file  offb_node.cpp
 * @brief offboard example node, written with mavros version 0.14.2,
-*  px4 flight stack and tested in Gazebo SITL
-* @author huang li long <huanglilongwk@outlook.com>
-* @time 2016/07/05
+*  		 px4 flight stack and tested in Gazebo SITL
+*  		 this example code copy from http://dev.px4.io/ros-mavros-offboard.html
 */
 
 #include <ros/ros.h>
