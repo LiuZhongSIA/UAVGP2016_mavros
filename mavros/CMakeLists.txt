@@ -101,7 +101,7 @@ add_dependencies(mavros mavros_msgs_generate_messages_cpp)
 
 add_library(mavros_plugins
   src/plugins/dummy.cpp
-  #src/plugins/sys_status.cpp
+  src/plugins/sys_status.cpp
   src/plugins/sys_time.cpp
   src/plugins/imu_pub.cpp
   src/plugins/param.cpp
@@ -121,7 +121,7 @@ add_library(mavros_plugins
   src/plugins/ftp.cpp
   src/plugins/actuator_control.cpp
   src/plugins/manual_control.cpp
-  src/plugins/mavros_msg.cpp
+  src/plugins/mavros_test_msg.cpp
   src/plugins/altitude.cpp
   src/plugins/attitude.cpp
   src/plugins/hil_controls.cpp
