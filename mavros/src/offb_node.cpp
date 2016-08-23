@@ -20,12 +20,6 @@ void state_cb(const mavros_msgs::State::ConstPtr& msg){
     current_state = *msg;
 }
 
-mavros_msgs::Mavros_msg msg_test;
-void mavros_msg_cb(const mavros_msgs::Mavros_msg::ConstPtr& msg){
-    msg_test = *msg;
-    ROS_INFO("mavros_msg test: %f", msg_test.test);
-}
-
 mavros_msgs::Attitude att;
 void att_cb(const mavros_msgs::Attitude::ConstPtr& msg){
     att = *msg;
