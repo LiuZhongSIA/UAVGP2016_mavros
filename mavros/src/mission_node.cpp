@@ -151,6 +151,10 @@ int main(int argc, char **argv)
         //         last_request = ros::Time::now();
         //     }
         // }
+		if(!current_state.armed)
+		{
+			current_pos_state = POS_A;
+		}
 
         // auto task off
         if( current_state.mode == "AUTO.TAKEOFF"){
@@ -158,7 +162,7 @@ int main(int argc, char **argv)
         }
 
         // landing
-        if(current_pos_state == LAND){                  
+        if((current_pos_state == LAND) && (current_state.mode != "OFFBOARD")){                  
             
             if( current_state.mode != "AUTO.LAND" &&
             (ros::Time::now() - landing_last_request > ros::Duration(5.0))){
