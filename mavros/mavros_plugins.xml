@@ -32,9 +32,9 @@
 	<class name="safety_area" type="mavros::std_plugins::SafetyAreaPlugin" base_class_type="mavros::plugin::PluginBase">
 		<description>Send to FCU safety allowed area.</description>
 	</class>
-	<class name="3dr_radio" type="mavros::std_plugins::TDRRadioPlugin" base_class_type="mavros::plugin::PluginBase">
+	<!--class name="3dr_radio" type="mavros::std_plugins::TDRRadioPlugin" base_class_type="mavros::plugin::PluginBase">
 		<description>Publish 3DR Radio modem status.</description>
-	</class>
+	</class>-->
 	<class name="setpoint_velocity" type="mavros::std_plugins::SetpointVelocityPlugin" base_class_type="mavros::plugin::PluginBase">
 		<description>Send to FCU external velocity setpoint.</description>
 	</class>
@@ -47,9 +47,9 @@
 	<class name="setpoint_raw" type="mavros::std_plugins::SetpointRawPlugin" base_class_type="mavros::plugin::PluginBase">
 		<description>Access to raw POSITION_TARGET_LOCAL_NED messages.</description>
 	</class>
-	<class name="vfr_hud" type="mavros::std_plugins::VfrHudPlugin" base_class_type="mavros::plugin::PluginBase">
+	<!--class name="vfr_hud" type="mavros::std_plugins::VfrHudPlugin" base_class_type="mavros::plugin::PluginBase">
 		<description>Publish VFR HUD data and WIND estimations.</description>
-	</class>
+	</class>-->
 	<class name="ftp" type="mavros::std_plugins::FTPPlugin" base_class_type="mavros::plugin::PluginBase">
 		<description>Access to files on FCU via MAVLink-FTP.</description>
 	</class>
@@ -67,6 +67,9 @@
 	</class>
 	<class name="attitude" type="mavros::std_plugins::AttitudePlugin" base_class_type="mavros::plugin::PluginBase">
 		<description>Publish attitude values</description>
+	</class>
+	<class name="mavros_test_msg" type="mavros::std_plugins::Mavros_test_msgPlugin" base_class_type="mavros::plugin::PluginBase">
+		<description>Subscribe mavros_msg, this message for testing</description>
 	</class>
         <class name="hil_controls" type="mavros::std_plugins::HilControlsPlugin" base_class_type="mavros::plugin::PluginBase">
 		<description>Publish HIL controls values</description>

@@ -16,6 +16,8 @@
 
 #include <mavros_msgs/CommandTOL.h>
 
+#include <mavros/frame_tf.h>
+
 void state_machine(void);
 
 // state machine's states
@@ -87,6 +89,17 @@ int main(int argc, char **argv)
     pose_b.pose.position.y = 5;
     pose_b.pose.position.z = 5;
 
+	auto quat_yaw = mavros::ftf::quaternion_from_rpy(0.0, 0.0, 0.0);
+	pose_a.pose.orientation.x = quat_yaw.x();
+	pose_a.pose.orientation.y = quat_yaw.y();
+	pose_a.pose.orientation.z = quat_yaw.z();
+	pose_a.pose.orientation.w = quat_yaw.w();
+	
+	pose_b.pose.orientation.x = quat_yaw.x();
+	pose_b.pose.orientation.y = quat_yaw.y();
+	pose_b.pose.orientation.z = quat_yaw.z();
+	pose_b.pose.orientation.w = quat_yaw.w();
+
     //send a few setpoints before starting  --> for safety
     for(int i = 100; ros::ok() && i > 0; --i){
         local_pos_pub.publish(pose_a);
@@ -116,28 +129,32 @@ int main(int argc, char **argv)
     while(ros::ok()){
 
         // this part for simulation
-        if(current_state.mode != "OFFBOARD" &&
-          (ros::Time::now() - last_request > ros::Duration(5.0)))
-        {
-            if(set_mode_client.call(offb_set_mode) &&
-               offb_set_mode.response.success)
-            {
-                ROS_INFO("Offboard enabled");
-            }
-            last_request = ros::Time::now();
-        } else 
-        {
-            if(!current_state.armed &&      // if not armed
-              (ros::Time::now() - last_request > ros::Duration(5.0)))
-              {
-                if(arming_client.call(arm_cmd) &&
-                   arm_cmd.response.success)
-                {
-                    ROS_INFO("Vehicle armed");
-                }
-                last_request = ros::Time::now();
-            }
-        }
+        // if(current_state.mode != "OFFBOARD" &&
+        //   (ros::Time::now() - last_request > ros::Duration(5.0)))
+        // {
+        //     if(set_mode_client.call(offb_set_mode) &&
+        //        offb_set_mode.response.success)
+        //     {
+        //         ROS_INFO("Offboard enabled");
+        //     }
+        //     last_request = ros::Time::now();
+        // } else 
+        // {
+        //     if(!current_state.armed &&      // if not armed
+        //       (ros::Time::now() - last_request > ros::Duration(5.0)))
+        //       {
+        //         if(arming_client.call(arm_cmd) &&
+        //            arm_cmd.response.success)
+        //         {
+        //             ROS_INFO("Vehicle armed");
+        //         }
+        //         last_request = ros::Time::now();
+        //     }
+        // }
+		if(!current_state.armed)
+		{
+			current_pos_state = POS_A;
+		}
 
         // auto task off
         if( current_state.mode == "AUTO.TAKEOFF"){
@@ -145,7 +162,7 @@ int main(int argc, char **argv)
         }
 
         // landing
-        if(current_pos_state == LAND){                  
+        if((current_pos_state == LAND) && (current_state.mode != "OFFBOARD")){                  
             
             if( current_state.mode != "AUTO.LAND" &&
             (ros::Time::now() - landing_last_request > ros::Duration(5.0))){

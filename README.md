@@ -1,5 +1,6 @@
 # How to use
-  1. Read master branch's [README.md](https://github.com/mavlink/mavros/blob/master/mavros/README.md#installation)
+  1. Read master branch's [README.md](https://github.com/mavlink/mavros/blob/master/mavros/README.md#installation)(options)
+  2. sudo apt-get install python-catkin-tools python-rosinstall-generator -y
 
 # How to build
   $ mkdir mavros_ws/src
@@ -12,15 +13,7 @@
   
   $ git clone https://github.com/huanglilong/mavros
   
-  $ cd ..
-  
-  $ wstool init src
-
-  $ rosinstall_generator mavlink | tee /tmp/mavlink.rosinstall
-
-  $ wstool merge -t src /tmp/mavlink.rosinstall
-
-  $ wstool update -t src
+  $ git clone https://github.com/huanglilong/mavlink-kinetic mavlink
 
   $ catkin build [mavros]
   
@@ -31,9 +24,14 @@
   
   Press safety switch here!
   
-  $ rosrun mavros mavsaftey arm
+  $ rosrun mavros mavsafety arm
   
   $ rosrun mavros offb_node
+
+# Simulating with gazebo
+  $ make posix_sitl_default gazebo
+
+  $ roslaunch mavros px4.launch fcu_url:="udp://:14540@127.0.0.1:14557"
   
 # Get the topic's messages
   $ rqt_graph

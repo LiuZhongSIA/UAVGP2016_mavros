@@ -22,6 +22,7 @@ add_message_files(
   HomePosition.msg
   ManualControl.msg
   Mavlink.msg
+  Mavros_test_msg.msg
   OpticalFlowRad.msg
   OverrideRCIn.msg
   ParamValue.msg

@@ -478,8 +478,8 @@ public:
 			make_handler(&SystemStatusPlugin::handle_heartbeat),
 			make_handler(&SystemStatusPlugin::handle_sys_status),
 			make_handler(&SystemStatusPlugin::handle_statustext),
-			make_handler(&SystemStatusPlugin::handle_meminfo),
-			make_handler(&SystemStatusPlugin::handle_hwstatus),
+			//make_handler(&SystemStatusPlugin::handle_meminfo),
+			//make_handler(&SystemStatusPlugin::handle_hwstatus),
 			make_handler(&SystemStatusPlugin::handle_autopilot_version),
 			make_handler(&SystemStatusPlugin::handle_extended_sys_state),
 			make_handler(&SystemStatusPlugin::handle_battery_status),
@@ -711,15 +711,15 @@ private:
 		process_statustext_normal(textm.severity, text);
 	}
 
-	void handle_meminfo(const mavlink::mavlink_message_t *msg, mavlink::ardupilotmega::msg::MEMINFO &mem)
-	{
-		mem_diag.set(mem.freemem, mem.brkval);
-	}
+	// void handle_meminfo(const mavlink::mavlink_message_t *msg, mavlink::ardupilotmega::msg::MEMINFO &mem)
+	// {
+	// 	mem_diag.set(mem.freemem, mem.brkval);
+	// }
 
-	void handle_hwstatus(const mavlink::mavlink_message_t *msg, mavlink::ardupilotmega::msg::HWSTATUS &hwst)
-	{
-		hwst_diag.set(hwst.Vcc, hwst.I2Cerr);
-	}
+	// void handle_hwstatus(const mavlink::mavlink_message_t *msg, mavlink::ardupilotmega::msg::HWSTATUS &hwst)
+	// {
+	// 	hwst_diag.set(hwst.Vcc, hwst.I2Cerr);
+	// }
 
 	void handle_autopilot_version(const mavlink::mavlink_message_t *msg, mavlink::common::msg::AUTOPILOT_VERSION &apv)
 	{

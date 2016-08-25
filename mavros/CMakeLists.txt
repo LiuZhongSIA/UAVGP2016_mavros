@@ -112,15 +112,16 @@ add_library(mavros_plugins
   src/plugins/global_position.cpp
   src/plugins/setpoint_position.cpp
   src/plugins/safety_area.cpp
-  src/plugins/3dr_radio.cpp
+  #src/plugins/3dr_radio.cpp
   src/plugins/setpoint_velocity.cpp
   src/plugins/setpoint_accel.cpp
   src/plugins/setpoint_attitude.cpp
   src/plugins/setpoint_raw.cpp
-  src/plugins/vfr_hud.cpp
+  #src/plugins/vfr_hud.cpp
   src/plugins/ftp.cpp
   src/plugins/actuator_control.cpp
   src/plugins/manual_control.cpp
+  src/plugins/mavros_test_msg.cpp
   src/plugins/altitude.cpp
   src/plugins/attitude.cpp
   src/plugins/hil_controls.cpp

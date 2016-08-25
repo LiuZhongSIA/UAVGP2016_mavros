@@ -1,9 +1,8 @@
 /**
-* @file offb_node.cpp
+* @file  offb_node.cpp
 * @brief offboard example node, written with mavros version 0.14.2,
-*  px4 flight stack and tested in Gazebo SITL
-* @author huang lil long <huanglilongwk@outlook.com>
-* @time 2016/07/05
+*  		 px4 flight stack and tested in Gazebo SITL
+*  		 this example code copy from http://dev.px4.io/ros-mavros-offboard.html
 */
 
 #include <ros/ros.h>
@@ -12,7 +11,9 @@
 #include <mavros_msgs/SetMode.h>
 #include <mavros_msgs/State.h>
 #include <mavros_msgs/Attitude.h>
+#include <mavros_msgs/Mavros_test_msg.h>
 
+#include <mavros/frame_tf.h>
 
 mavros_msgs::State current_state;
 void state_cb(const mavros_msgs::State::ConstPtr& msg){
@@ -25,12 +26,20 @@ void att_cb(const mavros_msgs::Attitude::ConstPtr& msg){
     //ROS_INFO("Attitude roll: %f", att.roll);
 }
 
+mavros_msgs::Mavros_test_msg msg_test;
+ void mavros_msg_cb(const mavros_msgs::Mavros_test_msg::ConstPtr& msg){
+     msg_test = *msg;
+     ROS_INFO("mavros_msg test: %f", msg_test.test);
+ }
+
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "offb_node");
     ros::NodeHandle nh;
 
     ros::Subscriber state_sub = nh.subscribe<mavros_msgs::State>("mavros/state", 10, state_cb);
+
+	ros::Subscriber test_msg_sub = nh.subscribe<mavros_msgs::Mavros_test_msg>("mavros/mavros_test_msg", 10, mavros_msg_cb);
 
     ros::Subscriber att_sub = nh.subscribe<mavros_msgs::Attitude>("mavros/attitude", 10, att_cb);
 
@@ -51,6 +60,12 @@ int main(int argc, char **argv)
     pose.pose.position.x = 0;
     pose.pose.position.y = 0;
     pose.pose.position.z = 2;
+
+	auto quat_yaw = mavros::ftf::quaternion_from_rpy(0.0, 0.0, 3.14);
+	pose.pose.orientation.x = quat_yaw.x();
+	pose.pose.orientation.y = quat_yaw.y();
+	pose.pose.orientation.z = quat_yaw.z();
+	pose.pose.orientation.w = quat_yaw.w();
 
     //send a few setpoints before starting
     for(int i = 100; ros::ok() && i > 0; --i){
