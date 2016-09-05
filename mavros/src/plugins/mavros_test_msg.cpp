@@ -38,13 +38,14 @@ public:
         PluginBase::initialize(uas_);
 
         nh.param<std::string>("frame_id", frame_id, "map");
-        mavros_msg_pub = nh.advertise<mavros_msgs::Mavros_test_msg>("mavros_test_msg", 10);
+        //mavros_msg_pub = nh.advertise<mavros_msgs::Mavros_test_msg>("mavros_test_msg", 10);
+		mavros_msg_sub = nh.subscribe("mavros_test_msg", 10, &Mavros_test_msgPlugin::mavros_test_msg_cb, this);
     }
 
     Subscriptions get_subscriptions()
     {
         return {
-            make_handler(&Mavros_test_msgPlugin::handle_mavros_msg),
+            //make_handler(&Mavros_test_msgPlugin::handle_mavros_msg),
         };
     }
 
@@ -52,16 +53,23 @@ private:
     ros::NodeHandle nh;
     std::string frame_id;
 
-    ros::Publisher mavros_msg_pub;
+    //ros::Publisher mavros_msg_pub;
+	ros::Subscriber mavros_msg_sub;
 
-    void handle_mavros_msg(const mavlink::mavlink_message_t *msg, mavlink::pixhawk::msg::MAVROS_TEST_MSG &mavros_test_msg)
-    {
-        auto ros_msg = boost::make_shared<mavros_msgs::Mavros_test_msg>();
-        ros_msg->header = m_uas->synchronized_header(frame_id, mavros_test_msg.timestamp);
+    // void handle_mavros_msg(const mavlink::mavlink_message_t *msg, mavlink::pixhawk::msg::MAVROS_TEST_MSG &mavros_test_msg)
+    // {
+    //     auto ros_msg = boost::make_shared<mavros_msgs::Mavros_test_msg>();
+    //     ros_msg->header = m_uas->synchronized_header(frame_id, mavros_test_msg.timestamp);
         
-        ros_msg->test        = mavros_test_msg.test;
-        mavros_msg_pub.publish(ros_msg);
-    }
+    //     ros_msg->test        = mavros_test_msg.test;
+    //     mavros_msg_pub.publish(ros_msg);
+    // }
+	void mavros_test_msg_cb(const mavros_msgs::Mavros_test_msg::ConstPtr &req) {
+		mavlink::pixhawk::msg::MAVROS_TEST_MSG test_msg{};
+		test_msg.timestamp = ros::Time::now().toNSec() / 1000;
+		test_msg.test = req->test;
+		UAS_FCU(m_uas)->send_message_ignore_drop(test_msg);
+	}
 };
 }   // namespace std_plugins
 }   // namespace mavros

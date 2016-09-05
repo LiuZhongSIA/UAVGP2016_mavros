@@ -162,7 +162,7 @@ int main(int argc, char **argv)
         }
 
         // landing
-        if((current_pos_state == LAND) && (current_state.mode != "OFFBOARD")){                  
+        if((current_pos_state == LAND) && (current_state.mode == "OFFBOARD")){                  
             
             if( current_state.mode != "AUTO.LAND" &&
             (ros::Time::now() - landing_last_request > ros::Duration(5.0))){
