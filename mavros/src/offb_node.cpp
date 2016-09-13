@@ -12,6 +12,7 @@
 #include <mavros_msgs/State.h>
 #include <mavros_msgs/Attitude.h>
 #include <mavros_msgs/Mavros_test_msg.h>
+#include <mavros_msgs/FixedTargetPosition.h>
 
 #include <mavros/frame_tf.h>
 
@@ -27,10 +28,16 @@ void att_cb(const mavros_msgs::Attitude::ConstPtr& msg){
 }
 
 mavros_msgs::Mavros_test_msg msg_test;
- void mavros_msg_cb(const mavros_msgs::Mavros_test_msg::ConstPtr& msg){
-     msg_test = *msg;
-     ROS_INFO("mavros_msg test: %f", msg_test.test);
- }
+void mavros_msg_cb(const mavros_msgs::Mavros_test_msg::ConstPtr& msg){
+	msg_test = *msg;
+	ROS_INFO("mavros_msg test: %f", msg_test.test);
+}
+
+mavros_msgs::FixedTargetPosition fix_pos;
+void fixed_target_position_cb(const mavros_msgs::FixedTargetPosition::ConstPtr& msg){
+	fix_pos = *msg;
+	ROS_INFO("mavros_msg test: %f", fix_pos.home_alt);
+}
 
 int main(int argc, char **argv)
 {
@@ -40,6 +47,8 @@ int main(int argc, char **argv)
     ros::Subscriber state_sub = nh.subscribe<mavros_msgs::State>("mavros/state", 10, state_cb);
 
 	ros::Subscriber test_msg_sub = nh.subscribe<mavros_msgs::Mavros_test_msg>("mavros/mavros_test_msg", 10, mavros_msg_cb);
+
+	ros::Subscriber fix_pos_sub  = nh.subscribe<mavros_msgs::FixedTargetPosition>("mavros/fixed_target_position", 10, fixed_target_position_cb);
 
     ros::Subscriber att_sub = nh.subscribe<mavros_msgs::Attitude>("mavros/attitude", 10, att_cb);
 
@@ -83,30 +92,6 @@ int main(int argc, char **argv)
     ros::Time last_request = ros::Time::now();
 
     while(ros::ok()){
-
-        // this part for simulation
-        if(current_state.mode != "OFFBOARD" &&
-          (ros::Time::now() - last_request > ros::Duration(5.0)))
-        {
-            if(set_mode_client.call(offb_set_mode) &&
-               offb_set_mode.response.success)
-            {
-                ROS_INFO("Offboard enabled");
-            }
-            last_request = ros::Time::now();
-        } else 
-        {
-            if(!current_state.armed &&      // if not armed
-              (ros::Time::now() - last_request > ros::Duration(5.0)))
-              {
-                if(arming_client.call(arm_cmd) &&
-                   arm_cmd.response.success)
-                {
-                    ROS_INFO("Vehicle armed");
-                }
-                last_request = ros::Time::now();
-            }
-        }
 
         local_pos_pub.publish(pose);
 

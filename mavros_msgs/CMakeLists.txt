@@ -35,6 +35,14 @@ add_message_files(
   Vibration.msg
   Waypoint.msg
   WaypointList.msg
+  FixedTargetPosition.msg
+  FixedTargetReturn.msg
+  ObstaclePosition.msg
+  TaskStatusChange.msg
+  TaskStatusMonitor.msg
+  VisionNumScan.msg
+  VisionOneNumGet.msg
+  YawSpCalculated.msg
 )
 
 add_service_files(
