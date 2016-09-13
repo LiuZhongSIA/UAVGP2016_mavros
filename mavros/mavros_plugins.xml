@@ -71,40 +71,31 @@
 	<class name="mavros_test_msg" type="mavros::std_plugins::Mavros_test_msgPlugin" base_class_type="mavros::plugin::PluginBase">
 		<description>Subscribe mavros_msg, this message for testing</description>
 	</class>
-        <class name="hil_controls" type="mavros::std_plugins::HilControlsPlugin" base_class_type="mavros::plugin::PluginBase">
+    <class name="hil_controls" type="mavros::std_plugins::HilControlsPlugin" base_class_type="mavros::plugin::PluginBase">
 		<description>Publish HIL controls values</description>
 	</class>
-	<!--custom msgs >-->
-	</class>
-        <class name="fixed_target_position" type="mavros::std_plugins::FixedTargetPositionPlugin" base_class_type="mavros::plugin::PluginBase">
+    <class name="fixed_target_position" type="mavros::std_plugins::FixedTargetPositionPlugin" base_class_type="mavros::plugin::PluginBase">
 		<description>Subscribe fixed_target_position values</description>
 	</class>
-	</class>
-        <class name="fixed_target_return" type="mavros::std_plugins::FixedTargetReturnPlugin" base_class_type="mavros::plugin::PluginBase">
+    <class name="fixed_target_return" type="mavros::std_plugins::FixedTargetReturnPlugin" base_class_type="mavros::plugin::PluginBase">
 		<description>Publish fixed_target_return values</description>
 	</class>
-	</class>
-        <class name="obstacle_position" type="mavros::std_plugins::ObstaclePositionPlugin" base_class_type="mavros::plugin::PluginBase">
+    <class name="obstacle_position" type="mavros::std_plugins::ObstaclePositionPlugin" base_class_type="mavros::plugin::PluginBase">
 		<description>Publish obstacle_position values</description>
 	</class>
-	</class>
-        <class name="task_status_change" type="mavros::std_plugins::TaskStatusChangePlugin" base_class_type="mavros::plugin::PluginBase">
+    <class name="task_status_change" type="mavros::std_plugins::TaskStatusChangePlugin" base_class_type="mavros::plugin::PluginBase">
 		<description>Subscribe task_status_change values</description>
 	</class>
-	</class>
-        <class name="task_status_monitor" type="mavros::std_plugins::TaskStatusMonitorPlugin" base_class_type="mavros::plugin::PluginBase">
+    <class name="task_status_monitor" type="mavros::std_plugins::TaskStatusMonitorPlugin" base_class_type="mavros::plugin::PluginBase">
 		<description>Publish task_status_monitor values</description>
 	</class>
-	</class>
-        <class name="vision_num_scan" type="mavros::std_plugins::VisionNumScanPlugin" base_class_type="mavros::plugin::PluginBase">
+    <class name="vision_num_scan" type="mavros::std_plugins::VisionNumScanPlugin" base_class_type="mavros::plugin::PluginBase">
 		<description>Publish vision_num_scan values</description>
 	</class>
-	</class>
-        <class name="vision_one_num_get" type="mavros::std_plugins::VisionOneNumGetPlugin" base_class_type="mavros::plugin::PluginBase">
+    <class name="vision_one_num_get" type="mavros::std_plugins::VisionOneNumGetPlugin" base_class_type="mavros::plugin::PluginBase">
 		<description>Publish vision_one_num_get values</description>
 	</class>
-	</class>
-        <class name="yaw_sp_calculated" type="mavros::std_plugins::YawSpCalculatedPlugin" base_class_type="mavros::plugin::PluginBase">
+    <class name="yaw_sp_calculated" type="mavros::std_plugins::YawSpCalculatedPlugin" base_class_type="mavros::plugin::PluginBase">
 		<description>Publish yaw_sp_calculated values</description>
 	</class>
 </library>

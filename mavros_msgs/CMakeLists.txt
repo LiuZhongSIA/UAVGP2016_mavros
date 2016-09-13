@@ -35,7 +35,6 @@ add_message_files(
   Vibration.msg
   Waypoint.msg
   WaypointList.msg
-  # custom msgs
   FixedTargetPosition.msg
   FixedTargetReturn.msg
   ObstaclePosition.msg
