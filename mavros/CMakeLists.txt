@@ -134,6 +134,16 @@ add_library(mavros_plugins
   src/plugins/vision_num_scan.cpp
   src/plugins/vision_one_num_get.cpp
   src/plugins/yaw_sp_calculated.cpp
+  # new custom msgs
+  #src/plugins/fixed_target_position_p2m.cpp
+  #src/plugins/fixed_target_return_m2p.cpp
+  #src/plugins/obstacle_position_m2p.cpp
+  #src/plugins/task_status_change_p2m.cpp
+  #src/plugins/task_status_monitor_m2p.cpp
+  #src/plugins/vision_num_scan_m2p.cpp
+  #src/plugins/vision_one_num_get_m2p.cpp
+  #src/plugins/yaw_sp_calculated_m2p.cpp
+
 )
 add_dependencies(mavros_plugins
   mavros

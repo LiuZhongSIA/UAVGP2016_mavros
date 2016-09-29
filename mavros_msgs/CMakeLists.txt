@@ -43,6 +43,15 @@ add_message_files(
   VisionNumScan.msg
   VisionOneNumGet.msg
   YawSpCalculated.msg
+# new msg files -libn 2016-09-29
+  #FIXED_TARGET_POSITION_P2M.msg
+ # FIXED_TARGET_RETURN_M2P.msg
+  #OBSTACLE_POSITION_M2P.msg
+ # TASK_STATUS_CHANGE_P2M.msg
+  #TASK_STATUS_MONITOR_M2P.msg
+ # VISION_NUM_SCAN_M2P.msg
+  #VISION_ONE_NUM_GET_M2P.msg
+ # YAW_SP_CALCULATED_M2P.msg
 )
 
 add_service_files(
