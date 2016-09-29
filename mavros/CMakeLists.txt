@@ -135,8 +135,8 @@ add_library(mavros_plugins
   src/plugins/vision_one_num_get.cpp
   src/plugins/yaw_sp_calculated.cpp
   # new custom msgs
-  #src/plugins/fixed_target_position_p2m.cpp
-  #src/plugins/fixed_target_return_m2p.cpp
+  src/plugins/fixed_target_position_p2m.cpp
+  src/plugins/fixed_target_return_m2p.cpp
   #src/plugins/obstacle_position_m2p.cpp
   #src/plugins/task_status_change_p2m.cpp
   #src/plugins/task_status_monitor_m2p.cpp

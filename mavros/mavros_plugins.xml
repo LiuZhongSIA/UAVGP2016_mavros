@@ -100,14 +100,11 @@
 	</class>
 
 	
-	
-	<!--class name="3dr_radio" type="mavros::std_plugins::TDRRadioPlugin" base_class_type="mavros::plugin::PluginBase">
-		<description>Publish 3DR Radio modem status.</description>
 	<class name="fixed_target_position_p2m" type="mavros::std_plugins::FixedTargetPositionP2MPlugin" base_class_type="mavros::plugin::PluginBase">
-		<description>Subscribe fixed_target_position_p2m values</description>
+		<description>Publish fixed_target_position_p2m values</description>
 	</class>
 	<class name="fixed_target_return_m2p" type="mavros::std_plugins::FixedTargetReturnM2PPlugin" base_class_type="mavros::plugin::PluginBase">
-		<description>Publish fixed_target_return_m2p values</description>
+		<description>Subscribe fixed_target_return_m2p values</description>
 	</class>
     <class name="obstacle_position_m2p" type="mavros::std_plugins::ObstaclePositionM2PPlugin" base_class_type="mavros::plugin::PluginBase">
 		<description>Publish obstacle_position_m2p values</description>
@@ -128,7 +125,6 @@
 		<description>Publish yaw_sp_calculated_m2p values</description>
 	</class>
 
-	</class>-->
 
 </library>
 
