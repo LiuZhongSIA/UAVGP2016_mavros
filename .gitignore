@@ -7,3 +7,5 @@ core
 libmavconn/include/mavconn/mavlink_dialect.h
 libmavconn/src/mavlink_helpers.cpp
 .vscode/
+
+mavros/.project
