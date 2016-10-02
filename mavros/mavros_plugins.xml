@@ -107,22 +107,22 @@
 		<description>Subscribe fixed_target_return_m2p values</description>
 	</class>
     <class name="obstacle_position_m2p" type="mavros::std_plugins::ObstaclePositionM2PPlugin" base_class_type="mavros::plugin::PluginBase">
-		<description>Publish obstacle_position_m2p values</description>
+		<description>Subscribe obstacle_position_m2p values</description>
 	</class>
     <class name="task_status_change_p2m" type="mavros::std_plugins::TaskStatusChangeP2MPlugin" base_class_type="mavros::plugin::PluginBase">
-		<description>Subscribe task_status_change_p2m values</description>
+		<description>Publish task_status_change_p2m values</description>
 	</class>
-    <class name="task_status_monitor_m2p" type="mavros::std_plugins::TaskStatusMonitorM2PPlugin" base_class_type="mavros::plugin::PluginBase">
-		<description>Publish task_status_monitor_m2p values</description>
+    <class name="task_status_monitor_m2p" type="mavros::std_plugins::TASK_STATUS_MONITOR_M2PPlugin" base_class_type="mavros::plugin::PluginBase">
+		<description>Subscribe task_status_monitor_m2p values</description>
 	</class>
-    <class name="vision_num_scan_m2p" type="mavros::std_plugins::VisionNumScanM2PPlugin" base_class_type="mavros::plugin::PluginBase">
-		<description>Publish vision_num_scan_m2p values</description>
+    <class name="vision_num_scan_m2p" type="mavros::std_plugins::VISION_NUM_SCAN_M2PPlugin" base_class_type="mavros::plugin::PluginBase">
+		<description>Subscribe vision_num_scan_m2p values</description>
 	</class>
-    <class name="vision_one_num_get_m2p" type="mavros::std_plugins::VisionOneNumGetM2PPlugin" base_class_type="mavros::plugin::PluginBase">
-		<description>Publish vision_one_num_get_m2p values</description>
+    <class name="vision_one_num_get_m2p" type="mavros::std_plugins::VISION_ONE_NUM_GET_M2PPlugin" base_class_type="mavros::plugin::PluginBase">
+		<description>Subscribe vision_one_num_get_m2p values</description>
 	</class>
-    <class name="yaw_sp_calculated_m2p" type="mavros::std_plugins::YawSpCalculatedM2PPlugin" base_class_type="mavros::plugin::PluginBase">
-		<description>Publish yaw_sp_calculated_m2p values</description>
+    <class name="yaw_sp_calculated_m2p" type="mavros::std_plugins::YAW_SP_CALCULATED_M2PPlugin" base_class_type="mavros::plugin::PluginBase">
+		<description>Subscribe yaw_sp_calculated_m2p values</description>
 	</class>
 
 

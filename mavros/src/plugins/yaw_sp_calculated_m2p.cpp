@@ -1,22 +1,22 @@
 /**
- * @brief 	: YawSpCalculated plugin
- * @file 	: yaw_sp_calculated.cpp
- * @author 	: huang li long <huanglilongwk@outlook.com>
- * @time 	: 2016/09/12
- */
+* @file     : yaw_sp_calculated_m2p.cpp
+* @brief    : yaw_sp_calculated_m2p plugin.
+* @author   : libn
+* @time     : Oct 2, 2016 9:41:15 AM
+*/
 
 #include <mavros/mavros_plugin.h>
 
-#include <mavros_msgs/YawSpCalculated.h>
+#include <mavros_msgs/YAW_SP_CALCULATED_M2P.h>
 
 namespace mavros {
 namespace std_plugins {
 /**
  * @brief YawSpCalculated plugin.
  */
-class YawSpCalculatedPlugin : public plugin::PluginBase {
+class YAW_SP_CALCULATED_M2PPlugin : public plugin::PluginBase {
 public:
-    YawSpCalculatedPlugin() : PluginBase(),
+	YAW_SP_CALCULATED_M2PPlugin() : PluginBase(),
         nh("~")
     { }
 
@@ -29,7 +29,7 @@ public:
 
         nh.param<std::string>("frame_id", frame_id, "map");
         //mavros_msg_pub = nh.advertise<mavros_msgs::YawSpCalculated>("yaw_sp_calculated", 10);
-		mavros_msg_sub = nh.subscribe("yaw_sp_calculated", 10, &YawSpCalculatedPlugin::yaw_sp_calculated_cb, this);
+		mavros_msg_sub = nh.subscribe("yaw_sp_calculated_m2p", 10, &YAW_SP_CALCULATED_M2PPlugin::yaw_sp_calculated_m2p_cb, this);
     }
 
     Subscriptions get_subscriptions()
@@ -55,10 +55,10 @@ private:
 
     //     mavros_msg_pub.publish(ros_msg);
     // }
-	void yaw_sp_calculated_cb(const mavros_msgs::YawSpCalculated::ConstPtr &req) {
-		mavlink::pixhawk::msg::YAW_SP_CALCULATED test_msg{};
+	void yaw_sp_calculated_m2p_cb(const mavros_msgs::YAW_SP_CALCULATED_M2P::ConstPtr &req) {
+		mavlink::pixhawk::msg::YAW_SP_CALCULATED_M2P test_msg{};
 
-		test_msg.timestamp = ros::Time::now().toNSec() / 1000;
+//		test_msg.timestamp = ros::Time::now().toNSec() / 1000;
 		test_msg.yaw_sp = req->yaw_sp;
 
 		UAS_FCU(m_uas)->send_message_ignore_drop(test_msg);
@@ -68,4 +68,4 @@ private:
 }   // namespace mavros
 
 #include <pluginlib/class_list_macros.h>
-PLUGINLIB_EXPORT_CLASS(mavros::std_plugins::YawSpCalculatedPlugin, mavros::plugin::PluginBase)
+PLUGINLIB_EXPORT_CLASS(mavros::std_plugins::YAW_SP_CALCULATED_M2PPlugin, mavros::plugin::PluginBase)
