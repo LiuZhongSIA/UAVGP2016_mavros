@@ -52,7 +52,7 @@ private:
 
 //        ros_msg->header = m_uas->synchronized_header(frame_id, task_status_change.timestamp);
 
-        ros_msg->num_odd_even      = task_status_change.num_odd_even;
+        ros_msg->spray_duration      = task_status_change.spray_duration;
 		ros_msg->task_status       = task_status_change.task_status;
 		ros_msg->loop_value        = task_status_change.loop_value;
 

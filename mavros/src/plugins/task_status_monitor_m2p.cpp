@@ -66,7 +66,7 @@ private:
 
 //		test_msg.timestamp = ros::Time::now().toNSec() / 1000;
 
-		test_msg.num_odd_even 	= req->num_odd_even;
+		test_msg.spray_duration 	= req->spray_duration;
 		test_msg.task_status 	= req->task_status;
 		test_msg.loop_value 	= req->loop_value;
 		test_msg.target_lat 	= req->target_lat;

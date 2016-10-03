@@ -126,14 +126,14 @@ add_library(mavros_plugins
   src/plugins/attitude.cpp
   src/plugins/hil_controls.cpp
   # custom msgs
-  src/plugins/fixed_target_position.cpp
-  src/plugins/fixed_target_return.cpp
-  src/plugins/obstacle_position.cpp
-  src/plugins/task_status_change.cpp
-  src/plugins/task_status_monitor.cpp
-  src/plugins/vision_num_scan.cpp
-  src/plugins/vision_one_num_get.cpp
-  src/plugins/yaw_sp_calculated.cpp
+#  src/plugins/fixed_target_position.cpp
+#  src/plugins/fixed_target_return.cpp
+#  src/plugins/obstacle_position.cpp
+#  src/plugins/task_status_change.cpp
+#  src/plugins/task_status_monitor.cpp
+#  src/plugins/vision_num_scan.cpp
+#  src/plugins/vision_one_num_get.cpp
+#  src/plugins/yaw_sp_calculated.cpp
   # new custom msgs
   src/plugins/fixed_target_position_p2m.cpp
   src/plugins/fixed_target_return_m2p.cpp
