@@ -11,9 +11,9 @@
   
   $ cd src
   
-  $ git clone https://github.com/huanglilong/mavros
+  $ git clone https://github.com/SIA-UAVGP/mavros.git
   
-  $ git clone https://github.com/huanglilong/mavlink-kinetic mavlink
+  $ git clone https://github.com/SIA-UAVGP/mavlink-kinetic mavlink
 
   $ catkin build [mavros]
   
