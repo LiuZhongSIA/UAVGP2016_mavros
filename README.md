@@ -14,7 +14,7 @@ git checkout uavcomp
 cd ..
 git clone https://github.com/SIA-UAVGP/mavlink-kinetic mavlink
 cd mavlink
-git checkout uavcomp
+git checkout master
 cd ../..
 catkin build mavros
 ```
