@@ -55,9 +55,9 @@ private:
 	// 	ros_msg->num_odd_even 	= task_status_monitor.num_odd_even;
 	// 	ros_msg->task_status 	= task_status_monitor.task_status;
 	// 	ros_msg->loop_value 	= task_status_monitor.loop_value;
-	// 	ros_msg->target_lat 	= task_status_monitor.target_lat;
-	// 	ros_msg->target_lon 	= task_status_monitor.target_lon;
-	// 	ros_msg->target_alt 	= task_status_monitor.target_alt;
+	// 	ros_msg->target_x 	= task_status_monitor.target_x;
+	// 	ros_msg->target_y 	= task_status_monitor.target_y;
+	// 	ros_msg->target_z 	= task_status_monitor.target_z;
 
     //     mavros_msg_pub.publish(ros_msg);
     // }
@@ -69,9 +69,9 @@ private:
 		test_msg.spray_duration 	= req->spray_duration;
 		test_msg.task_status 	= req->task_status;
 		test_msg.loop_value 	= req->loop_value;
-		test_msg.target_lat 	= req->target_lat;
-		test_msg.target_lon 	= req->target_lon;
-		test_msg.target_alt 	= req->target_alt;
+		test_msg.target_x 	= req->target_x;
+		test_msg.target_y 	= req->target_y;
+		test_msg.target_z 	= req->target_z;
 
 		UAS_FCU(m_uas)->send_message_ignore_drop(test_msg);
 	}

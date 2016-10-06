@@ -52,21 +52,21 @@ private:
 
 //	 	test_msg.timestamp = ros::Time::now().toNSec() / 1000;
 
-	 	test_msg.home_lat        	= req->home_lat;
-	 	test_msg.home_lon        	= req->home_lon;
-	 	test_msg.home_alt        	= req->home_alt;
+	 	test_msg.home_x        	= req->home_x;
+	 	test_msg.home_y        	= req->home_y;
+	 	test_msg.home_z        	= req->home_z;
 
-	 	test_msg.observe_lat        = req->observe_lat;
-	 	test_msg.observe_lon        = req->observe_lon;
-	 	test_msg.observe_alt        = req->observe_alt;
+	 	test_msg.observe_x        = req->observe_x;
+	 	test_msg.observe_y        = req->observe_y;
+	 	test_msg.observe_z        = req->observe_z;
 
-	 	test_msg.spray_left_lat     = req->spray_left_lat;
-	 	test_msg.spray_left_lon     = req->spray_left_lon;
-	 	test_msg.spray_left_alt     = req->spray_left_alt;
+	 	test_msg.spray_left_x     = req->spray_left_x;
+	 	test_msg.spray_left_y     = req->spray_left_y;
+	 	test_msg.spray_left_z     = req->spray_left_z;
 
-	 	test_msg.spray_right_lat    = req->spray_right_lat;
-	 	test_msg.spray_right_lon    = req->spray_right_lon;
-	 	test_msg.spray_right_alt    = req->spray_right_alt;
+	 	test_msg.spray_right_x    = req->spray_right_x;
+	 	test_msg.spray_right_y    = req->spray_right_y;
+	 	test_msg.spray_right_z    = req->spray_right_z;
 
 	 	UAS_FCU(m_uas)->send_message_ignore_drop(test_msg);
 	 }

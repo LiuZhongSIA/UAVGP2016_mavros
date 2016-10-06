@@ -52,21 +52,21 @@ private:
 
         //ros_msg->header = m_uas->synchronized_header(frame_id, fixed_target_position_p2m.timestamp);
 
-        ros_msg->home_lat        = fixed_target_position_p2m.home_lat;
-		ros_msg->home_lon        = fixed_target_position_p2m.home_lon;
-		ros_msg->home_alt        = fixed_target_position_p2m.home_alt;
+        ros_msg->home_x        = fixed_target_position_p2m.home_x;
+		ros_msg->home_y        = fixed_target_position_p2m.home_y;
+		ros_msg->home_z        = fixed_target_position_p2m.home_z;
 
-		ros_msg->observe_lat     = fixed_target_position_p2m.observe_lat;
-		ros_msg->observe_lon     = fixed_target_position_p2m.observe_lon;
-		ros_msg->observe_alt     = fixed_target_position_p2m.observe_alt;
+		ros_msg->observe_x     = fixed_target_position_p2m.observe_x;
+		ros_msg->observe_y     = fixed_target_position_p2m.observe_y;
+		ros_msg->observe_z     = fixed_target_position_p2m.observe_z;
 
-		ros_msg->spray_left_lat  = fixed_target_position_p2m.spray_left_lat;
-		ros_msg->spray_left_lon  = fixed_target_position_p2m.spray_left_lon;
-		ros_msg->spray_left_alt  = fixed_target_position_p2m.spray_left_alt;
+		ros_msg->spray_left_x  = fixed_target_position_p2m.spray_left_x;
+		ros_msg->spray_left_y  = fixed_target_position_p2m.spray_left_y;
+		ros_msg->spray_left_z  = fixed_target_position_p2m.spray_left_z;
 
-		ros_msg->spray_right_lat = fixed_target_position_p2m.spray_right_lat;
-		ros_msg->spray_right_lon = fixed_target_position_p2m.spray_right_lon;
-		ros_msg->spray_right_alt = fixed_target_position_p2m.spray_right_alt;
+		ros_msg->spray_right_x = fixed_target_position_p2m.spray_right_x;
+		ros_msg->spray_right_y = fixed_target_position_p2m.spray_right_y;
+		ros_msg->spray_right_z = fixed_target_position_p2m.spray_right_z;
 
         mavros_msg_pub.publish(ros_msg);
     }
