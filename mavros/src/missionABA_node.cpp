@@ -29,6 +29,8 @@ static const int LAND = 7;
 // 当前的状态机状态
 int current_pos_state = NONE;
 
+// 设置起飞期望速度
+geometry_msgs::TwistStamped vel_take_off;
 // 设置A、B点位置变量，将通过ros发送出去
 geometry_msgs::PoseStamped pose_a;
 geometry_msgs::PoseStamped pose_b;
@@ -64,6 +66,8 @@ int main(int argc, char **argv)
     ros::Time last_request = ros::Time::now();
 
     // 用于发布位置期望
+    ros::Publisher vel_take_off_pub = nh.advertise<geometry_msgs::TwistStamped>("mavros/setpoint_velocity/cmd_vel", 10);
+    // 用于发布位置期望
     ros::Publisher local_pos_pub = nh.advertise<geometry_msgs::PoseStamped>("mavros/setpoint_position/local", 10);
     // 发布service msg，用于解锁
     ros::ServiceClient arming_client = nh.serviceClient<mavros_msgs::CommandBool>("mavros/cmd/arming");
@@ -77,6 +81,8 @@ int main(int argc, char **argv)
     ros::Subscriber att_sub = nh.subscribe<mavros_msgs::AttitudeRad>("mavros/attitude_rad", 10, att_cb);
 
     // --初始化变量--
+    // 起飞的期望速度
+    vel_take_off.twist.linear.z = 2;
     // A点位置，东北天
     pose_a.pose.position.x = 0;
     pose_a.pose.position.y = 0;
@@ -85,16 +91,17 @@ int main(int argc, char **argv)
     pose_b.pose.position.x = 0;
     pose_b.pose.position.y = 5;
     pose_b.pose.position.z = 5;
-    // 航向期望
-    auto quat_yaw = mavros::ftf::quaternion_from_rpy(0.0, 0.0, 0.0);
-    pose_a.pose.orientation.x = quat_yaw.x();
-    pose_a.pose.orientation.y = quat_yaw.y();
-    pose_a.pose.orientation.z = quat_yaw.z();
-    pose_a.pose.orientation.w = quat_yaw.w();
-    pose_b.pose.orientation.x = quat_yaw.x();
-    pose_b.pose.orientation.y = quat_yaw.y();
-    pose_b.pose.orientation.z = quat_yaw.z();
-    pose_b.pose.orientation.w = quat_yaw.w();
+    // 姿态期望，主要是航向
+    auto quat = mavros::ftf::quaternion_from_rpy(0.0, 0.0, 0.0);
+    pose_a.pose.orientation.x = quat.x();
+    pose_a.pose.orientation.y = quat.y();
+    pose_a.pose.orientation.z = quat.z();
+    pose_a.pose.orientation.w = quat.w();
+    quat = mavros::ftf::quaternion_from_rpy(0.0, 0.0, 1.5708);
+    pose_b.pose.orientation.x = quat.x();
+    pose_b.pose.orientation.y = quat.y();
+    pose_b.pose.orientation.z = quat.z();
+    pose_b.pose.orientation.w = quat.w();
     // Service msg 赋值
     arm_cmd.request.value = true;
     offb_set_mode.request.custom_mode = "OFFBOARD";
@@ -165,7 +172,8 @@ int main(int argc, char **argv)
                     ROS_INFO("Taking off!");
                     Shown = true;
                 }
-                local_pos_pub.publish(pose_a);
+                // 设定期望起飞速度
+                vel_take_off_pub.publish(vel_take_off);
                 if(current_pos.pose.position.z > 3)
                 {
                     current_pos_state = POS_A;
