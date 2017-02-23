@@ -35,6 +35,7 @@ add_message_files(
   WaypointList.msg
 
   AttitudeRad.msg
+  LzMavrosTest.msg
 )
 
 add_service_files(

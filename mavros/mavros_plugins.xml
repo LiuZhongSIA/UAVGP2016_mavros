@@ -64,7 +64,10 @@
 	</class>
 
 	<class name="attitude_rad" type="mavros::std_plugins::AttitudeRadPlugin" base_class_type="mavros::plugin::PluginBase">
-		<description>Publish attitude values, as a ROS node</description>
+		<description>Publish attitude_rad values, as a ROS node</description>
+	</class>
+	<class name="lz_mavros_test" type="mavros::std_plugins::LzMavrosTestPlugin" base_class_type="mavros::plugin::PluginBase">
+		<description>Subscribe lz_mavros_test values, as a ROS node</description>
 	</class>
 </library>
 

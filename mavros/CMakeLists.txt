@@ -123,6 +123,7 @@ add_library(mavros_plugins
   src/plugins/hil_controls.cpp
 
   src/plugins/attitude_rad.cpp
+  src/plugins/lz_mavros_test.cpp
 )
 add_dependencies(mavros_plugins
   mavros
