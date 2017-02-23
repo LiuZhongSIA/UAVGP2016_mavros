@@ -112,18 +112,14 @@ add_library(mavros_plugins
   src/plugins/global_position.cpp
   src/plugins/setpoint_position.cpp
   src/plugins/safety_area.cpp
-  #src/plugins/3dr_radio.cpp
   src/plugins/setpoint_velocity.cpp
   src/plugins/setpoint_accel.cpp
   src/plugins/setpoint_attitude.cpp
   src/plugins/setpoint_raw.cpp
-  #src/plugins/vfr_hud.cpp
   src/plugins/ftp.cpp
   src/plugins/actuator_control.cpp
   src/plugins/manual_control.cpp
-  src/plugins/mavros_test_msg.cpp
   src/plugins/altitude.cpp
-  src/plugins/attitude.cpp
   src/plugins/hil_controls.cpp
 )
 add_dependencies(mavros_plugins
@@ -157,24 +153,6 @@ target_link_libraries(gcs_bridge
   ${Boost_LIBRARIES}
 )
 
-add_executable(offb_node
-  src/offb_node.cpp
-)
-target_link_libraries(offb_node
-  mavros
-  ${catkin_LIBRARIES}
-  ${Boost_LIBRARIES}
-)
-
-add_executable(mission_node
-  src/mission_node.cpp
-)
-target_link_libraries(mission_node
-  mavros
-  ${catkin_LIBRARIES}
-  ${Boost_LIBRARIES}
-)
-
 #############
 ## Install ##
 #############
@@ -191,7 +169,7 @@ catkin_install_python(PROGRAMS
 )
 
 ## Mark executables and/or libraries for installation
-install(TARGETS mavros mavros_plugins mavros_node gcs_bridge offb_node mission_node
+install(TARGETS mavros mavros_plugins mavros_node gcs_bridge
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
