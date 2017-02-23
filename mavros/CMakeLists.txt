@@ -121,6 +121,8 @@ add_library(mavros_plugins
   src/plugins/manual_control.cpp
   src/plugins/altitude.cpp
   src/plugins/hil_controls.cpp
+
+  src/plugins/attitude_rad.cpp
 )
 add_dependencies(mavros_plugins
   mavros

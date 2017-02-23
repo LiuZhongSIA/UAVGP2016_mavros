@@ -33,6 +33,8 @@ add_message_files(
   Vibration.msg
   Waypoint.msg
   WaypointList.msg
+
+  AttitudeRad.msg
 )
 
 add_service_files(

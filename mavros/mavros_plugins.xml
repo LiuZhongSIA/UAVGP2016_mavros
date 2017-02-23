@@ -62,5 +62,9 @@
         <class name="hil_controls" type="mavros::std_plugins::HilControlsPlugin" base_class_type="mavros::plugin::PluginBase">
 		<description>Publish HIL controls values</description>
 	</class>
+
+	<class name="attitude_rad" type="mavros::std_plugins::AttitudeRadPlugin" base_class_type="mavros::plugin::PluginBase">
+		<description>Publish attitude values, as a ROS node</description>
+	</class>
 </library>
 
