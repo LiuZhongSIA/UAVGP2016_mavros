@@ -200,6 +200,8 @@ int main(int argc, char **argv)
                 if(Shown == false)
                 {
                     ROS_INFO("Hovering at position A!");
+                    ROS_INFO("Roll: %f rad, Pitch: %f rad, Yaw: %f rad",
+                             current_att.roll, current_att.pitch, current_att.yaw);
                     Shown = true;
                 }
                 local_pos_pub.publish(pose_a);
@@ -229,6 +231,8 @@ int main(int argc, char **argv)
                 if(Shown == false)
                 {
                     ROS_INFO("Hovering at position B!");
+                    ROS_INFO("Roll: %f rad, Pitch: %f rad, Yaw: %f rad",
+                             current_att.roll, current_att.pitch, current_att.yaw);
                     Shown = true;
                 }
                 local_pos_pub.publish(pose_b);
