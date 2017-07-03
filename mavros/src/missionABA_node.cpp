@@ -65,7 +65,7 @@ int main(int argc, char **argv)
     ros::Time stay_B = ros::Time::now();
     ros::Time last_request = ros::Time::now();
 
-    // 用于发布位置期望
+    // 用于发布速度期望
     ros::Publisher vel_take_off_pub = nh.advertise<geometry_msgs::TwistStamped>("mavros/setpoint_velocity/cmd_vel", 10);
     // 用于发布位置期望
     ros::Publisher local_pos_pub = nh.advertise<geometry_msgs::PoseStamped>("mavros/setpoint_position/local", 10);
