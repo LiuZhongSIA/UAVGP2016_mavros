@@ -174,6 +174,15 @@ target_link_libraries(missionABA_node
   ${Boost_LIBRARIES}
 )
 
+add_executable(state_machine_demo
+  src/state_machine_demo.cpp
+)
+target_link_libraries(state_machine_demo
+  mavros
+  ${catkin_LIBRARIES}
+  ${Boost_LIBRARIES}
+)
+
 #############
 ## Install ##
 #############
